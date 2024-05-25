@@ -1,0 +1,56 @@
+dotnet --version 
+dotnet add package MinimalApis.Extensions --version 0.11.0 
+dotnet add package Microsoft.EntityFrameworkCore.Sqlite --version 9.0.0-preview.4.24267.1
+dotnet tool install --global dotnet-ef --version 9.0.0-preview.4.24267.1
+dotnet add package Microsoft.EntityFrameworkCore.Design --version 9.0.0-preview.4.24267.1
+dotnet ef migrations add InitialCreate --output-dir Data\Migrations
+dotnet ef database update     
+dotnet ef migrations add seedGeneres --output-dir Data\Migrations  
+dotnet run   
+
+
+1)dotnet --version:
+
+Purpose: This command checks and prints the installed version of the .NET SDK on your machine.
+Use: It's useful for verifying that you have the correct version of .NET installed before proceeding with other .NET-related commands.
+
+2)dotnet add package MinimalApis.Extensions --version 0.11.0:
+
+Purpose: This command adds the MinimalApis.Extensions package (version 0.11.0) to your .NET project.
+Use: The MinimalApis.Extensions package provides additional functionality for building minimal APIs in .NET, making it easier to develop lightweight web APIs.
+
+3)dotnet add package Microsoft.EntityFrameworkCore.Sqlite --version 9.0.0-preview.4.24267.1:
+
+Purpose: This command adds the Microsoft.EntityFrameworkCore.Sqlite package (version 9.0.0-preview.4.24267.1) to your project.
+Use: This package allows your project to use SQLite as the database provider with Entity Framework Core (EF Core), a popular ORM (Object-Relational Mapper) for .NET.
+
+4)dotnet tool install --global dotnet-ef --version 9.0.0-preview.4.24267.1:
+
+Purpose: This command installs the dotnet-ef tool globally on your system (version 9.0.0-preview.4.24267.1).
+Use: The dotnet-ef tool is used for Entity Framework Core commands such as migrations and database updates. Installing it globally makes it available from any location on your system.
+
+5)dotnet add package Microsoft.EntityFrameworkCore.Design --version 9.0.0-preview.4.24267.1:
+
+Purpose: This command adds the Microsoft.EntityFrameworkCore.Design package (version 9.0.0-preview.4.24267.1) to your project.
+Use: This package provides design-time tools for EF Core, including support for creating and applying migrations.
+
+6)dotnet ef migration add InitialCreate --output-dir Data\Migrations:
+
+Purpose: This command creates a new migration named InitialCreate and places the migration files in the specified directory (Data\Migrations).
+Use: Migrations are used to incrementally update the database schema to match the current state of your EF Core model. The InitialCreate migration usually represents the initial state of the database.
+
+7)dotnet ef database update:
+
+Purpose: This command applies any pending migrations to the database.
+Use: It updates the database schema to the latest version based on your EF Core model and migrations. This is typically run after creating migrations to apply those changes to the actual database.
+
+8)dotnet ef migrations add seedGeneres --output-dir Data\Migrations:
+
+Purpose: This command creates a new migration named seedGeneres and places the migration files in the specified directory (Data\Migrations).
+Use: This migration could be used for adding initial seed data (such as genres) to the database. Migrations can include not just schema changes but also data seeding logic.
+
+9)dotnet run:
+
+Purpose: This command builds and runs the application.
+Use: It compiles the application and starts it, which is typically the final step to see your changes in action or to test the application.
+In summary, these commands are used to set up and manage a .NET project that uses Entity Framework Core with SQLite, handle migrations to update the database schema, and run the application. The process includes adding necessary packages, creating migrations to reflect model changes in the database, and applying those migrations to keep the database schema in sync with the application’s data model.
